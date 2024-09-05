@@ -1,80 +1,46 @@
 # Frontend Coding Interview Test
 
-We recommend (although not required) to use the following languages, libraries, components: **TypeScript**, **React Query** or **RSC**, **Tailwind**, **shadcnUI**, **Next.js Image component**, and **zod** (for API output validation).
+## Description
 
-## How to use
+This repository implements a Pokémon data table with pagination and loading skeleton.
 
-Clone using the following command:
+### Demo
 
-```bash
-git clone https://github.com/mmiro-balize/frontend-test.git
-```
+https://github.com/user-attachments/assets/0031f08b-dceb-4e57-ba95-2ef0e6454408
 
-Navigate to the `frontend-test` directory and run the following command:
+### Key Features:
 
-```bash
-npm install
-```
+1. **Pokémon Data Fetching:**
+   - Utilizes the PokeAPI to fetch Pokémon data
+   - Implements data validation using Zod schemas
 
-To run the project, use the following command:
+2. **Data Table:**
+   - Displays Pokémon information in a responsive table
+   - Shows name, image, and types for each Pokémon
 
-```bash
-npm run dev
-```
+3. **Pagination:**
+   - Adds client-side pagination with "Previous" and "Next" buttons
+   - Updates URL parameters for page navigation
 
-## Requirements
+4. **Loading State:**
+   - Implements a skeleton loading component for better UX
+   - Displays while data is being fetched
 
-1. **Fetch Pokémon Data:**
+5. **Styling:**
+   - Uses Tailwind CSS for responsive and clean design
 
-   - Use the Pokémon API endpoint: `https://pokeapi.co/api/v2/pokemon` to fetch a list of Pokémon.
-   - The API returns a JSON object with the following structure:
-     ```typescript
-     {
-       count: number; // Total number of Pokémon
-       next: string | null; // URL for the next page of results
-       previous: string | null; // URL for the previous page of results
-       results: {
-         name: string;
-         url: string;
-       }
-       []; // List of Pokémon
-     }
-     ```
+### Technical Details:
 
-2. **Create Initial Data Table:**
+- Built with Next.js 14 and React 18
+- Utilizes TypeScript for type safety
+- Implements server-side rendering for initial data fetch
+- Configures Next.js Image component for optimized image loading
 
-   - Render the Pokémon in a data table with a single column:
-     - **Name:** Display the name of the Pokémon.
-   - At this stage, only the "Name" column should be populated since this is the only data available after the initial API fetch.
+### Testing Instructions:
 
-3. **Enhance Data Table with Additional Columns:**
-
-   - For each Pokémon in the table, use the `url` provided in the `results` to fetch additional details from each Pokémon's individual endpoint.
-   - - The API returns a JSON object with the following structure:
-     ```typescript
-     {
-       id: number;
-       sprites: {
-         front_default: string;
-       } // Image URLs
-       types: {
-         slot: number;
-         type: {
-           name: string;
-         }
-       }
-       [];
-     }
-     ```
-   - Add two new columns to the data table:
-     - **Image:** Fetch and display each Pokémon's image (sprite).
-     - **Types:** Fetch and display each Pokémon's types.
-
-4. **Pagination or Infinite Scroll:**
-   - Implement either pagination or infinite scrolling to allow fetching and displaying the next set of Pokémon using the `next` property from the API response.
-   - If pagination is chosen, provide controls to navigate between pages.
-   - If infinite scrolling is chosen, automatically fetch and display the next set of Pokémon as the user scrolls down.
-5. **Skeleton Loading State:**
-   - Render a skeleton data table while the API data is being fetched.
-   - Style the skeleton table to match the design of the final data table (e.g. using the same colors, column widths, etc.).
-   - The table must cleary indicate that the data is being fetched (e.g. with animated skeleton elements).
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Start the development server with `npm run dev`
+4. Navigate to `http://localhost:3000` to view the application
+5. Test pagination by clicking "Next" and "Previous" buttons
+6. Verify that the loading state appears when changing pages
